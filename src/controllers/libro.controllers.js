@@ -1,20 +1,9 @@
 import {libro} from "../model/libro_model.js"
-
-export const crearLibro= async (req, res) => {
-    try {
-        const userData = req.body;
-        const Libro = new libro(userData);
-        await Libro.save();
-        return res.json({ message: "libro registrado exitosamente" });
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ error: "Hubo un error al registrar el libro" });
-    }
-};
+import {autor} from "../model/autor_model.js"
 
 export const listadoLibros= async (req, res)=>{
     try {
-      const Libro = await libro.find();
+      const Libro = await libro.find().populate("autor" )
   
       return res.json(Libro);
   } catch (error) {

@@ -6,10 +6,8 @@ import libroRuta from "./src/routes/libro.routes.js"
 // Conecta a la base de datos
 conectarDB();
 
- app.use("/api", autorRuta)
- app.use("/api", libroRuta)
-
-
+ app.use("/", autorRuta)
+ app.use("/", libroRuta)
 
 app.listen(port, () => {
     console.log("Servidor en http://localhost:" + port);

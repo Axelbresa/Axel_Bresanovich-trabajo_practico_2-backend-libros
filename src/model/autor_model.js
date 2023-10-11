@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model,Types } from "mongoose";
 
 const AutorSchema =new Schema({
     nombre:{
@@ -13,6 +13,10 @@ const AutorSchema =new Schema({
         type:String,
         required:true 
     },
+    libros: {
+        type: Types.ObjectId,
+        ref: 'libros'
+    }
     },{
         timestamps:true,
         versionKey:false
