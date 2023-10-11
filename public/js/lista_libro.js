@@ -1,16 +1,16 @@
 const obtenerDatos = async () => {
-    const data = await fetch('/crear_libro', {
+    const data = await fetch('/lista', {
         method: 'GET'
     });
-    const reservas = await data.json();
-    return reservas;
+    const lista_libro = await data.json();
+    return lista_libro;
 }
 
 
 const mostrarReservas = (lista_libros, tablaElement) => {
-    let registros = '';
+    let lista = '';
     lista_libros.forEach(lista => {
-        registros += `
+        lista += `
             <tr>
                 <td>${lista.codigo}</td>
                 <td>${lista.nombre}</td>
@@ -34,7 +34,7 @@ const mostrarReservas = (lista_libros, tablaElement) => {
         `
     })
 
-    tablaElement.innerHTML = registros;
+    tablaElement.innerHTML = lista;
 
 }
 
@@ -61,9 +61,8 @@ const eliminarReserva = async (e) => {
 
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Mostrar las reservas en la tabla
     const tbody = document.querySelector('#listadoLibro');
-    const reservas = await obtenerDatos(); // undefined si no obtenerDatos no retorna nada
-    mostrarReservas(reservas, tbody);
+    const listado = await obtenerDatos(); 
+    mostrarReservas(listado, tbody);
 
 });

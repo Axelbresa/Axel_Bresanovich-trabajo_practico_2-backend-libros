@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>inicio</title>
-  </head>
+<%- include('partials/header') %>
+
   <body>
     <h1>Bienvenido a la Gestión de Libros</h1>
-    <a href="./lista_libros.ejs">Ver Lista de Libros</a>
+    <a href="/lista">Ver Lista de Libros</a>
     <br />
-    <a href="./autores_create.ejs">Agregar Autor</a>
+    <a href="./crear_autor">Agregar Autor</a>
     <br />
-    <a href="./libro_create.ejs">Agregar Libro</a>
+    <a href="./crear_libro">Agregar Libro</a>
   </body>
 </html>
+
+<%- include('partials/footer') %>

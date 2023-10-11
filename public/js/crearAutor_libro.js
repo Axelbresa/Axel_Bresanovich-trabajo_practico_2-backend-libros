@@ -1,6 +1,41 @@
-const formautor = document.querySelector("#formAutor")
+//autor
+const formAutor = document.querySelector("#formAutor");
 
-formautor.addEventListener('submit', async (e) => {
+formAutor.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const nombre = document.querySelector("#nombre").value;
+  const apellido = document.querySelector("#apellido").value;
+  const bibliografia = document.querySelector("#bibliografia").value;
+
+  const autor = {
+    nombre,
+    apellido,
+    bibliografia,
+  };
+
+  const data = await fetch('/autor', {
+    method: 'POST',
+    body: JSON.stringify(autor),
+    headers: {
+      'content-type': 'application/json',
+    },
+  });
+
+  const response = await data.json();
+
+  if (response.success) {
+    alert(response.message);
+    window.location.href = '/';
+  } else {
+    alert(response.message);
+  }
+});
+
+//autor_libro
+const formLibro = document.querySelector("#formLibro")
+
+formLibro.addEventListener('submit', async (e) => {
     e.preventDefault
 
     const titulo = document.querySelector("#titulo").value;
@@ -21,7 +56,7 @@ formautor.addEventListener('submit', async (e) => {
         descripcion
     }
 
-    const data = await fetch('/crear_libro', {
+    const data = await fetch('/lista', {
         method: 'POST',
         body: JSON.stringify(autor),
         headers: {
@@ -33,5 +68,4 @@ formautor.addEventListener('submit', async (e) => {
 
     alert(response.message);
     window.location.href = "/";
-
 })
