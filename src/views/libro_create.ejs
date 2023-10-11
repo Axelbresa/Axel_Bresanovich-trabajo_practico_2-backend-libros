@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agregar libro</title>
+
+</head>
+<body background="../img/fondo.jpg">
+  <header>
+    <div>
+    <h1 class="titulo-principal">Biclioteca</h1>
+    <img src="../img/libros.jpg" alt="Libros" class="titulo-imagen ">
+  </div>
+    <nav>
+     <ol>
+        <a href="autores_create.html">agregar autores</a>
+        <a href="index.html">autores</a>
+        <a href="libro_create.html">agregar libro</a>
+        <a href="index.html">libros</a>
+     </ol>
+    </nav>
+  </header>
+  <main>
+    
+    <form action="add_book.php" class="contenedor" id="formLibro" method="post" enctype="multipart/form-data">
+        <h2>Agregar libro</h2>
+      <div class="form-group">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo" placeholder="Título">
+      </div>
+      <div class="form-group">
+        <label for="fecha_publicacion">Fecha de publicación</label>
+        <input type="date" id="fecha_publicacion" name="fecha_publicacion">
+      </div>
+      <div class="form-group">
+        <label for="numero_paginas">Número de páginas</label>
+        <input type="number" id="numero_paginas" name="numero_paginas" placeholder="Número de páginas">
+      </div>
+      <div class="form-group">
+        <label for="precio">Genero</label>
+        <input type="text" id="genero" name="genero" placeholder="ingrese al genero">
+      </div>
+      <div class="form-group">
+        <label for="precio">Precio</label>
+        <input type="text" id="precio" name="precio" placeholder="precio del libro">
+      </div>
+      <div class="form-group">
+        <label for="portada">Portada</label>
+        <input type="file" id="portada" name="portada">
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" placeholder="Descripción" class="descripcion"></textarea>
+      </div>
+      <input type="submit" value="Crear" class="boton_enviar">
+      <input type="button" value="Cancelar" class="boton_cancelar" >
+    </form>
+
+  </main>
+
+  <footer>
+    <p>Copyright &copy; 2023 Mybrary</p>
+  </footer>
+
+</body>
+</html>

@@ -3,9 +3,9 @@ const formautor = document.querySelector("#formAutor")
 formautor.addEventListener('submit', async (e) => {
     e.preventDefault
 
-    const nombre = document.querySelector("#nombre")
-    const  apellido = document.querySelector("#apellido")
-    const bibliografia = document.querySelector("#bibliografia")
+    const nombre = document.querySelector("#nombre").value;
+    const apellido = document.querySelector("#apellido").value;
+    const bibliografia = document.querySelector("#bibliografia").value;
 
     const autor = {
         nombre,
@@ -13,15 +13,17 @@ formautor.addEventListener('submit', async (e) => {
         bibliografia
     }
 
-    const data = await fetch('http://localhost:4000/autor', {
+    const data = await fetch('/crear_autor', {
         method: 'POST',
         body: JSON.stringify(autor),
         headers: {
-            'content-type':'aplication/json'
+            'content-type':'application/json'
         }
     })
 
     const response = await data.json()
 
-    alert(response.message)
+    alert(response.message);
+    window.location.href = "/";
+
 })

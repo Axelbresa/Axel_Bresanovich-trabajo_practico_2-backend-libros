@@ -5,40 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lista de Libros</title>
   </head>
-  <body>
+    <h1>Lista de Libros</h1>
     <div class="container">
       <div class="row mt-5">
-        <h1 class="text-center border-botton">Lista de Reservas de la pelicula</h1>
+        <h1 class="text-center border-botton">Lista de libros</h1>
         <div class="col">
           <div class="col-md-3 mb-2">
-            <a href="/crear" class="btn btn sm btn-primary" id>Nuevo </a>
+            <a href="/" class="btn btn sm btn-primary" id>Nuevo </a>
             <a href="/" class="btn btn-info text-light">Inicio</a>
           </div>
           <table class="table">
             <thead>
               <tr>
-                <th>Código</th>
-                <th>nombre</th>
-                <th>apellido</th>
+                <th>titulo</th>
+                <th>fecha_publicacion</th>
+                <th>numero_paginas</th>
                 <th>precio</th>
-                <th>duracion</th>
-                <th>fecha</th>
-                <th>hora</th>
-                <th>pelicula</th>
-                <th>cantidad Personas</th>
-                <th>telefono</th>
-                <th>email</th>
+                <th>ganero</th>
+                <th>portada</th>
+                <th>Descripcion</th>
               </tr>
             </thead>   
            
     
-            <tbody id="listadoReservas"></tbody>
+            <tbody id="listadoLibro"></tbody>
           </table>
         </div>
       </div>
     </div>
     
-    <script src="/listar-reserva.js"></script>
-    
+    <script src="js/lista_libro.js"></script>
   </body>
 </html>

@@ -3,7 +3,7 @@ import { libro } from "../model/libro_model.js";
 
 //vista
 export const principal=(req, res)=>{
-    res.render ("bienvenida.html")
+    res.render ("bienvenida")
 }
 
 export const form_autor =(req, res)=>{
@@ -14,9 +14,7 @@ export const form_libro =(req, res)=>{
     res.render ("libro_create")
 }
 
-export const lista_libro =(req, res)=>{
-    res.render ("lista_libro")
-}
+
 
 //crud
 export const crearAutorLibro = async (req, res) => {

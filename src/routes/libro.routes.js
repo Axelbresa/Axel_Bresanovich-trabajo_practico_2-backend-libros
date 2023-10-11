@@ -1,7 +1,12 @@
 import express from 'express';
 
 export const router = express.Router();
-import {listadoLibros, obtenerUnLibro, editarLibro, EliminarLibro} from "../controllers/libro.controllers.js"
+import { obtenerUnLibro, editarLibro, EliminarLibro, listadoLibros, lista_libro} from "../controllers/libro.controllers.js"
+
+//vista
+router.get("/lista", lista_libro)
+
+//crud
 
 router.get('/libro', listadoLibros); 
 

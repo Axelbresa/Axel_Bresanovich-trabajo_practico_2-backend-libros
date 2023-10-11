@@ -1,6 +1,14 @@
 import {libro} from "../model/libro_model.js"
 import {autor} from "../model/autor_model.js"
 
+//vista
+export const lista_libro =(req, res)=>{
+    res.render ("lista_libros")
+}
+
+
+//crud
+
 export const listadoLibros= async (req, res)=>{
     try {
       const Libro = await libro.find().populate("autor" )
