@@ -10,38 +10,42 @@ export const form_autor =(req, res)=>{
     res.render ("autores_create")
 }
 
-export const form_libro =(req, res)=>{
-    res.render ("libro_create")
-}
+export const form_libro = (req, res) => {
+    const autorId = "6525801ccd2f32c58c8bd6a9"
+    res.render("libro_create", { autorId }); // Pasa autorId a la vista
+};
 
 
 
 //crud
 export const crearAutorLibro = async (req, res) => {
-    const { titulo, fecha_publicacion, numero_pag, genero, precio, portada, descripcion } = req.body;
-    const {autor}=req.params;
-      try{
-        const nuevo_libro = new libro({  
-            titulo, autor, 
-            fecha_publicacion, 
-            numero_pag, genero, 
-            precio, portada, 
+    const { titulo, fecha_publicacion, numero_paginas, genero, precio, portada, descripcion } = req.body;
+    const autorId = req.params.autorId;
+
+    try {
+        const nuevo_libro = new libro({
+            titulo,
+            autor: autorId,
+            fecha_publicacion,
+            numero_paginas,
+            genero,
+            precio,
+            portada: req.file.filename, 
             descripcion,
-            autor
-        })
-          await nuevo_libro.save()
-          return res.status(201).json({
-            message: 'Se creo el libro'
-          }) 
-  
-      }catch (error){
-        console.log('Error al crear el libro', error)
-          return res.status(500).json({
+        });
+
+        await nuevo_libro.save();
+        return res.status(201).json({
+            message: 'Se creó el libro'
+        });
+    } catch (error) {
+        console.log('Error al crear el libro', error);
+        return res.status(500).json({
             message: 'Error al crear un libro ' + error
-          })
-      }
-  
-  };
+        });
+    }
+};
+
 
 export const crearAutor= async (req, res) => {
     try {

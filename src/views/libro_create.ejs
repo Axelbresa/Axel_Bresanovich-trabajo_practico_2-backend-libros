@@ -1,42 +1,40 @@
 <%- include('partials/header') %>
 
-  <main>
-    
-    <form action="/lista" class="contenedor" id="formLibro" method="post" enctype="multipart/form-data">
-        <h2>Agregar libro</h2>
-      <div class="form-group">
-        <label for="titulo">Título</label>
-        <input type="text" id="titulo" name="titulo" placeholder="Título">
-      </div>
-      <div class="form-group">
-        <label for="fecha_publicacion">Fecha de publicación</label>
-        <input type="date" id="fecha_publicacion" name="fecha_publicacion">
-      </div>
-      <div class="form-group">
-        <label for="numero_paginas">Número de páginas</label>
-        <input type="number" id="numero_paginas" name="numero_paginas" placeholder="Número de páginas">
-      </div>
-      <div class="form-group">
-        <label for="precio">Genero</label>
-        <input type="text" id="genero" name="genero" placeholder="ingrese al genero">
-      </div>
-      <div class="form-group">
-        <label for="precio">Precio</label>
-        <input type="text" id="precio" name="precio" placeholder="precio del libro">
-      </div>
-      <div class="form-group">
-        <label for="portada">Portada</label>
-        <input type="file" id="portada" name="portada">
-      </div>
-      <div class="form-group">
-        <label for="descripcion">Descripción</label>
-        <textarea id="descripcion" name="descripcion" placeholder="Descripción" class="descripcion"></textarea>
-      </div>
-      <input type="submit" value="Crear" class="boton_enviar">
-      <input type="button" value="Cancelar" class="boton_cancelar" >
-    </form>
-    <script src="/js/crearAutor_libro.js"></script>
-  </main>
+<main>
+  <form action="/autor/<%= autorId %>/libro" class="contenedor" id="formLibro" method="post" enctype="multipart/form-data">
+    <h2>Agregar libro</h2>
+    <div class="form-group">
+      <label for="titulo">Título</label>
+      <input type="text" id="titulo" name="titulo" placeholder="Título">
+    </div>
+    <div class="form-group">
+      <label for="fecha_publicacion">Fecha de publicación</label>
+      <input type="date" id="fecha_publicacion" name="fecha_publicacion">
+    </div>
+    <div class="form-group">
+      <label for="numero_paginas">Número de páginas</label>
+      <input type="number" id="numero_paginas" name="numero_paginas" placeholder="Número de páginas">
+    </div>
+    <div class="form-group">
+      <label for="genero">Género</label>
+      <input type="text" id="genero" name="genero" placeholder="Género">
+    </div>
+    <div class="form-group">
+      <label for="precio">Precio</label>
+      <input type="text" id="precio" name="precio" placeholder="Precio del libro">
+    </div>
+    <div class="form-group">
+      <label for="portada">Portada</label>
+      <input type="file" id="portada" name="portada">
+    </div>
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" name="descripcion" placeholder="Descripción" class="descripcion"></textarea>
+    </div>
+    <input type="submit" value="Crear" class="boton_enviar">
+    <input type="button" value="Cancelar" class="boton_cancelar">
+  </form>
+  <script src="/js/crearAutor_libro.js"></script>
+</main>
 
 <%- include('partials/footer') %>
-  

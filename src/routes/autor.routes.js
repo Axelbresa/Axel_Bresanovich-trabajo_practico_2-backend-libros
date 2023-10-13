@@ -14,13 +14,13 @@ import {principal, form_autor, form_libro ,crearAutor, listadoAutores, obtenerUn
 
 
   //controlador
-  router.post('/autor', crearAutor);
+router.post('/autor', crearAutor);
 
-  router.get('/autor', listadoAutores); 
+router.get('/autor', listadoAutores); 
 
-  router.get("/autor/:_id", obtenerUnAutor);
+router.get("/autor/:_id", obtenerUnAutor);
  
-  router.post('/autor/:autor/libro', crearAutorLibro );
+router.post('/autor/:autorId/libro', crearAutorLibro);
 
  router.put('/autor/:_id', editarAutor);
  

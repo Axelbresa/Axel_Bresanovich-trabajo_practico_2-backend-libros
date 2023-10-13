@@ -1,5 +1,6 @@
+//libros
 const obtenerDatos = async () => {
-    const data = await fetch('/lista', {
+    const data = await fetch('/libro', {
         method: 'GET'
     });
     const lista_libro = await data.json();
@@ -7,7 +8,7 @@ const obtenerDatos = async () => {
 }
 
 
-const mostrarReservas = (lista_libros, tablaElement) => {
+const mostrarLista = (lista_libros, tablaElement) => {
     let lista = '';
     lista_libros.forEach(lista => {
         lista += `
@@ -39,7 +40,7 @@ const mostrarReservas = (lista_libros, tablaElement) => {
 }
 
 
-const eliminarReserva = async (e) => {
+const eliminarLista = async (e) => {
 
     console.log(e)
     const id = e.target.dataset.id;
@@ -63,6 +64,6 @@ const eliminarReserva = async (e) => {
 document.addEventListener('DOMContentLoaded', async () => {
     const tbody = document.querySelector('#listadoLibro');
     const listado = await obtenerDatos(); 
-    mostrarReservas(listado, tbody);
+    mostrarLista(listado, tbody);
 
 });
