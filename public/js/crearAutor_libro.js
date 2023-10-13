@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const titulo = document.querySelector("#titulo").value;
     const fecha_publicacion = document.querySelector("#fecha_publicacion").value;
-    const numero_paginas = document.querySelector("#numero_paginas").value;
+    const numero_pag = document.querySelector("#numero_pag").value;
     const genero = document.querySelector("#genero").value;
     const precio = document.querySelector("#precio").value;
     const portada = document.querySelector("#portada").files[0];
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const libro = {
       titulo,
       fecha_publicacion,
-      numero_paginas,
+      numero_pag,
       genero,
       portada,
       precio,

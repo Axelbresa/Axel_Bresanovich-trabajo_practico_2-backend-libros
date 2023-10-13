@@ -19,18 +19,27 @@ export const form_libro = (req, res) => {
 
 //crud
 export const crearAutorLibro = async (req, res) => {
-    const { titulo, fecha_publicacion, numero_paginas, genero, precio, portada, descripcion } = req.body;
+    const { titulo, fecha_publicacion, numero_pag, genero, precio, descripcion } = req.body;
     const autorId = req.params.autorId;
 
     try {
+        if (!req.files || !req.files.portada) {
+            return res.status(400).json({
+                message: 'No se ha proporcionado un archivo de portada.'
+            });
+        }
+
+        const portada = req.files.portada;
+        const portadaFilename = portada.name;
+
         const nuevo_libro = new libro({
             titulo,
             autor: autorId,
             fecha_publicacion,
-            numero_paginas,
+            numero_pag,
             genero,
             precio,
-            portada: req.file.filename, 
+            portada: portadaFilename, 
             descripcion,
         });
 
@@ -45,7 +54,6 @@ export const crearAutorLibro = async (req, res) => {
         });
     }
 };
-
 
 export const crearAutor= async (req, res) => {
     try {
