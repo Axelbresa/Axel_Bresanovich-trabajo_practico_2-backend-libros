@@ -1,9 +1,9 @@
 <%- include('partials/header') %>
 
-    <h1>Lista de Libros</h1>
+    <h1>Lista de autores</h1>
     <div class="container">
       <div class="row mt-5">
-        <h1 class="text-center border-botton">Lista de libros</h1>
+        <h1 class="text-center border-botton">Lista de autores</h1>
         <div class="col">
           <div class="col-md-3 mb-2">
             <a href="/crear_autor" class="btn btn sm btn-primary" id>Nuevo autor </a>
@@ -13,25 +13,20 @@
           <table class="table">
             <thead>
               <tr>
-                <th>titulo</th>
-                <th>fecha_publicacion</th>
-                <th>numero_paginas</th>
-                <th>precio</th>
-                <th>genero</th>
-                <th>portada</th>
-                <th>Descripcion</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Bibliografia</th>
               </tr>
             </thead>   
            
     
-            <tbody id="listadoLibro"></tbody>
+            <tbody id="listadoautor"></tbody>
           </table>
         </div>
       </div>
     </div>
-    <script src="js/lista_libro.js"></script>
+    <script src="js/lista_autor.js"></script>
 
 
 <%- include('partials/footer') %>
     
-  

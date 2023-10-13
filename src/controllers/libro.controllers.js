@@ -6,12 +6,11 @@ export const lista_libro =(req, res)=>{
     res.render ("lista_libros")
 }
 
-
 //crud
 
 export const listadoLibros= async (req, res)=>{
     try {
-      const Libro = await libro.find().populate("autor" )
+      const Libro = await libro.find().populate("Autor" )
   
       return res.json(Libro);
   } catch (error) {

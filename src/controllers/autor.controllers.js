@@ -1,10 +1,50 @@
 import {autor} from "../model/autor_model.js"
 import { libro } from "../model/libro_model.js";
+import router from "../routes/libro.routes.js";
+
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export const subirImagen = (req, res) => {
+  if (!req.files || !req.files.imagen) {
+    return res.status(400).json({
+      message: "No se ha proporcionado un archivo de imagen.",
+    });
+  }
+
+  const imagen = req.files.imagen;
+  const imagenFilename = imagen.name;
+
+  // Asegura que la ruta de destino sea correcta
+  const uploadPath = path.join(__dirname, "upload", imagenFilename);
+
+  imagen.mv(uploadPath, (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({
+        message: "Error al subir la imagen: " + err,
+      });
+    }
+
+    res.status(200).json({
+      message: "Imagen subida con éxito.",
+    });
+  });
+};
+
 
 //vista
 export const principal=(req, res)=>{
     res.render ("bienvenida")
 }
+
+export const listado_autor =(req, res)=>{
+    res.render ("lista_autor")
+}
+
 
 export const form_autor =(req, res)=>{
     res.render ("autores_create")
@@ -14,7 +54,6 @@ export const form_libro = (req, res) => {
     const autorId = "6525801ccd2f32c58c8bd6a9"
     res.render("libro_create", { autorId }); // Pasa autorId a la vista
 };
-
 
 
 //crud
@@ -39,11 +78,17 @@ export const crearAutorLibro = async (req, res) => {
             numero_pag,
             genero,
             precio,
-            portada: portadaFilename, 
+            portada: `/upload/${portadaFilename}`,
             descripcion,
         });
 
+        // Asegura que la ruta de destino sea correcta
+        const uploadPath = path.join(__dirname, "upload", portadaFilename);
+
+        await portada.mv(uploadPath);
+
         await nuevo_libro.save();
+
         return res.status(201).json({
             message: 'Se creó el libro'
         });
@@ -55,10 +100,11 @@ export const crearAutorLibro = async (req, res) => {
     }
 };
 
+
 export const crearAutor= async (req, res) => {
     try {
-        const userData = req.body;
-        const Autor = new autor(userData);
+        const autorData = req.body;
+        const Autor = new autor(autorData);
         await Autor.save();
         return res.json({ message: "autor registrado exitosamente" });
     } catch (error) {

@@ -1,25 +1,21 @@
 //libros
 const obtenerDatos = async () => {
-    const data = await fetch('/lista', {
+    const data = await fetch('/autor', {
         method: 'GET'
     });
-    const lista_libro = await data.json();
-    return lista_libro;
+    const lista_autor = await data.json();
+    return lista_autor;
 }
 
 
-const mostrarLista = (lista_libro, tablaElement) => {
+const mostrarLista = (lista_autor, tablaElement) => {
     let lista = '';
-    lista_libro.forEach(lista => {
+    lista_autor.forEach(lista => {
         lista += `
             <tr>
-                <td>${lista.titulo}</td>
-                <td>${lista.fecha_publicacion}</td>
-                <td>${lista.numero_pag}</td>
-                <td>${lista.precio}</td>
-                <td>${lista.descripcion}</td>
-                <td>${lista.portada}</td>
-                <td>${lista.genero}</td>
+                <td>${lista.nombre}</td>
+                <td>${lista.apellido}</td>
+                <td>${lista.bibliografia}</td>
                 <td class="gap-1">               
                     <a href="/editar/${lista.id}" class="btn btn-sm btn-warning fa-regular fa-pen-to-square">
                         editar
@@ -35,15 +31,12 @@ const mostrarLista = (lista_libro, tablaElement) => {
 
 }
 
+console.log(mostrarLista)
 
 const eliminarLista = async (e) => {
 
     console.log(e)
     const id = e.target.dataset.id;
-
-    // Se pregunta al usuario si está seguro de eliminar la reserva
-
- 
 
     const response = await fetch(`/libro/${id}`, {
         method: 'DELETE',
@@ -58,7 +51,7 @@ const eliminarLista = async (e) => {
 
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const tbody = document.querySelector('#listadoLibro');
+    const tbody = document.querySelector('#listadoautor');
     const listado = await obtenerDatos(); 
     mostrarLista(listado, tbody);
 
