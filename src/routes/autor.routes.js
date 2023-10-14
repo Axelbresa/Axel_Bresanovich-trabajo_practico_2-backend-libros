@@ -2,7 +2,7 @@ import express from 'express';
 
 export const router = express.Router();
 
-import {principal, form_autor, form_libro ,crearAutor, listadoAutores, obtenerUnAutor, EliminarAutor, crearAutorLibro, listado_autor, editarForm_autor, editarAutor} from "../controllers/autor.controllers.js"
+import {principal, form_autor, form_libro ,crearAutor, listadoAutores, obtenerUnAutor, EliminarAutor, crearAutorLibro, listado_autor, editarForm_autor, editarAutor, obtenerTodasLasImagenes} from "../controllers/autor.controllers.js"
 
 
   //vista
@@ -16,8 +16,6 @@ import {principal, form_autor, form_libro ,crearAutor, listadoAutores, obtenerUn
 
   router.get('/lista_autor', listado_autor); 
 
-
-
   //controlador
 router.post('/autor', crearAutor);
 
@@ -27,9 +25,10 @@ router.get("/autor/:_id", obtenerUnAutor);
  
 router.post('/autor/:autorId/libro', crearAutorLibro);
 
+router.get('/libro_img', obtenerTodasLasImagenes);
+
  router.put('/autor/:_id', editarAutor);
 
- 
  router.delete('/autor/:_id',EliminarAutor);
 
 export default router;

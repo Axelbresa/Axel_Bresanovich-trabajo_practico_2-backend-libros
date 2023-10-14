@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+
+<h2 class="titulo">Imágenes Subidas</h2>
+
+  <div class="contenedor_img_">
+  <% if (imagenes && imagenes.length > 0) { %>
+
+      <% imagenes.forEach(function(imagen) { %>
+          <img src="<%= imagen.portada %>" alt="Imagen">
+      <% }); %>
+  
+  <% } else { %>
+    <p>No se encontraron imágenes.</p>
+  <% } %>
+</div>
+
+<%- include('partials/footer') %>

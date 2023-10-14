@@ -57,9 +57,7 @@ export const editarForm_autor =(req, res)=>{
     res.render ("editar_autor")
 }
 
-
 //crud
-
 export const crearAutorLibro = async (req, res) => {
     const { titulo, fecha_publicacion, numero_pag, genero, precio, descripcion } = req.body;
     const autorId = req.params.autorId;
@@ -112,6 +110,19 @@ export const crearAutorLibro = async (req, res) => {
         });
     }
 };
+
+export const obtenerTodasLasImagenes = async (req, res) => {
+    try {
+      const imagenes = await libro.find({}, 'portada');
+  
+      res.render('todas_img', { imagenes });
+    } catch (error) {
+      console.error('Error al obtener las imágenes', error);
+      return res.status(500).json({
+        message: 'Error al obtener las imágenes: ' + error
+      });
+    }
+  };
 
 
 export const crearAutor= async (req, res) => {

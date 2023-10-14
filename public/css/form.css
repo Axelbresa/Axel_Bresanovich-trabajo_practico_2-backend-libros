@@ -209,3 +209,17 @@ textarea {
     text-align: center;
     background-color: #080808;
 }
+
+.contenedor_img_ {
+    border: gold solid 3px;
+    text-align: center;
+
+}
+
+.contenedor_img_ img {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border: #920792 solid 3px;
+    margin-left: 5px;
+}
