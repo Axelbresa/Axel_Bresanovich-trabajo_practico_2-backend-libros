@@ -28,13 +28,13 @@ function mostrarListaLibros(libros, tablaElement) {
             <tr>
                 <td>${libro.titulo}</td>
                 <td>${libro.fecha_publicacion}</td>
-                <td>${libro.numero_paginas}</td>
+                <td>${libro.numero_pag}</td>
                 <td>${libro.precio}</td>
                 <td>${libro.genero}</td>
                 <td>${libro.portada}</td>
                 <td>${libro.descripcion}</td>
                 <td class="gap-1">
-                    <a href="/libro/${libro._id}" class="btn btn-sm btn-warning">
+                    <a href="http://localhost:3000/editar_libro/${libro._id}" class="btn btn-sm btn-warning">
                         Editar
                     </a>
                     <button class="btn btn-sm btn-danger" data-id="${libro._id}" onclick="eliminarLibro(event)">Eliminar</button>
