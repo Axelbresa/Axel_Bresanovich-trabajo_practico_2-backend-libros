@@ -34,6 +34,14 @@ const publicPath = path.join(directoryPath, 'public');
 console.log(publicPath);
 app.use(express.static(publicPath));
 
+app.get('/img', (req, res) => {
+  res.render('index', {
+    // image1: '/upload/libro.jpg',
+    // image2: '/upload/imagen2.jpg',
+    // image2: '/upload/fondo.jpg',
+  });
+});
+
 app.set("port", process.env.PORT || 3100);
 
 

@@ -1,6 +1,6 @@
 //autor_libro
 const document = document.querySelector("#formLibro");
-const autorId = "6525801ccd2f32c58c8bd6a9"; // ID del autor en formato de cadena
+const autorId = "652abaeee0068ded654a7f95"; // ID del autor en formato de cadena
 
 
 

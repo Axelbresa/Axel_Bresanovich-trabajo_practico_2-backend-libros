@@ -1,6 +1,5 @@
 import {autor} from "../model/autor_model.js"
 import { libro } from "../model/libro_model.js";
-import router from "../routes/libro.routes.js";
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -50,7 +49,7 @@ export const form_autor =(req, res)=>{
 }
 
 export const form_libro = (req, res) => {
-    const autorId = "6525801ccd2f32c58c8bd6a9"
+    const autorId = "652abb90bf7a7103f0e2d065"
     res.render("libro_create", { autorId }); // Pasa autorId a la vista
 };
 
@@ -60,6 +59,7 @@ export const editarForm_autor =(req, res)=>{
 
 
 //crud
+
 export const crearAutorLibro = async (req, res) => {
     const { titulo, fecha_publicacion, numero_pag, genero, precio, descripcion } = req.body;
     const autorId = req.params.autorId;
@@ -72,7 +72,13 @@ export const crearAutorLibro = async (req, res) => {
         }
 
         const portada = req.files.portada;
-        const portadaFilename = portada.name;
+        const portadaFilename = portada.name; // Nombre del archivo
+
+        // Construir la URL completa de la imagen
+        const baseURL = 'http://localhost:3000/';
+        const imagenURL = `${baseURL}/upload/${portadaFilename}`;
+
+        console.log('URL de la imagen:', imagenURL); // Agregar esta línea para depuración
 
         const nuevo_libro = new libro({
             titulo,
@@ -81,19 +87,23 @@ export const crearAutorLibro = async (req, res) => {
             numero_pag,
             genero,
             precio,
-            portada: `/upload/${portadaFilename}`,
+            portada: imagenURL, // Almacenar la URL de la imagen
+            nombreArchivo: portadaFilename, // Nombre del archivo
             descripcion,
         });
 
         // Asegura que la ruta de destino sea correcta
-        const uploadPath = path.join(__dirname, "upload", portadaFilename);
+        const uploadPath = path.join(__dirname, '../../public/upload', portadaFilename);
 
         await portada.mv(uploadPath);
 
+        // Guarda el libro en la base de datos
         await nuevo_libro.save();
 
         return res.status(201).json({
-            message: 'Se creó el libro'
+            message: 'Se creó el libro',
+            imageURL: imagenURL,
+            fileName: portadaFilename, // Agregar el nombre del archivo en la respuesta
         });
     } catch (error) {
         console.log('Error al crear el libro', error);

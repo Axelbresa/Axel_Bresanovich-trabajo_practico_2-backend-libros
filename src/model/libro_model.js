@@ -23,15 +23,24 @@ const libroSchema = new Schema({
   },
   portada: {
     type: String,
-    required: true,
+    required: true, 
   },
   descripcion: {
     type: String,
     required: true,
   },
+ 
+  nombreArchivo: {
+    type: String,
+    required: true,
+  },
+  urlImagen: { 
+    type: String,
+    required: false,
+  },
   autor: {
     type: Schema.Types.ObjectId,
-    ref: "Autores", // Asegúrate de que "autor" coincida con el nombre del modelo de autor.
+    ref: "Autores", 
   },
 }, {
   timestamps: true,

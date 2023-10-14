@@ -14,7 +14,7 @@ export const editarForm_libro =(req, res)=>{
 
 export const listadoLibros= async (req, res)=>{
     try {
-      const Libro = await libro.find().populate("autor" )
+      const Libro = await libro.find().populate("autor")
   
       return res.json(Libro);
   } catch (error) {
