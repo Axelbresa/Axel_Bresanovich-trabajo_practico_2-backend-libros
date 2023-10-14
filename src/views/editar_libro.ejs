@@ -1,8 +1,12 @@
 <%- include('partials/header') %>
 
 <main>
-  <form action="/libro/_id" class="contenedor" id="formLibro" method="post" enctype="multipart/form-data">
-    <h2 class="titulo">Agregar libro</h2>
+  <form action="/libro/:_id" class="contenedor" id="formEditarLibro" method="PUT" enctype="multipart/form-data">
+    <h2 class="titulo">Editar libro</h2>
+    <div class="form-group">
+      <label for="id_libro">Id del libro</label>
+      <input type="text" id="id_libro" name="id_libro" placeholder="id del libro">
+    </div>
     <div class="form-group">
       <label for="titulo">Título</label>
       <input type="text" id="titulo" name="titulo" placeholder="Título">
@@ -15,10 +19,19 @@
       <label for="numero_pag">Número de páginas</label>
       <input type="number" id="numero_pag" name="numero_pag" placeholder="Número de páginas">
     </div>
-    <div class="form-group">
-      <label for="genero">Género</label>
-      <input type="text" id="genero" name="genero" placeholder="Género">
-    </div>
+    <select id="genero" name="genero">
+      <option value="Romance">Romance</option>
+      <option value="Terror">Terror</option>
+      <option value="Biografia">Biografia</option>
+      <option value="Policial">Policial</option>
+      <option value="Historia">Historia</option>
+      <option value="Ciencia">Ciencia</option>
+      <option value="Fantasia">Fantasia</option>
+      <option value="Ciencia_ficcion">Ciencia ficcion</option>
+      <option value="Autobiografia">Autobiografia</option>
+      <option value="Memorias">Memorias</option>
+      <option value="Poesia">Poesia</option>
+  </select>
     <div class="form-group">
       <label for="precio">Precio</label>
       <input type="text" id="precio" name="precio" placeholder="Precio del libro">

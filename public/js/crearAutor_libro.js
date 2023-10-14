@@ -1,4 +1,6 @@
 //autor
+document.addEventListener("DOMContentLoaded", () => {
+
 const formAutor = document.querySelector("#formAutor");
 
 formAutor.addEventListener('submit', async (e) => {
@@ -6,7 +8,7 @@ formAutor.addEventListener('submit', async (e) => {
 
   const nombre = document.querySelector("#nombre").value;
   const apellido = document.querySelector("#apellido").value;
-  const bibliografia = document.querySelector("#biliografia").value;
+  const bibliografia = document.querySelector("#bibliografia").value
 
   const autorr = {
     nombre,
@@ -14,65 +16,49 @@ formAutor.addEventListener('submit', async (e) => {
     bibliografia,
   };
 
-  const data = await fetch('/autor', {
-    method: 'POST',
-    body: JSON.stringify(autorr),
-    headers: {
-      'content-type': 'application/json',
-    },
-  });
-
-  const response = await data.json();
-
-  if (response.success) {
-    alert(response.message);
-    window.location.href = '/';
-  } else {
-    alert(response.message);
+  try {
+    const response = await fetch(`/autor/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(autorr)
+    });
+  
+    if (response.ok) {
+      // La edición fue exitosa, muestra un mensaje de éxito
+      const respToJson = await response.json();
+      Swal.fire({
+        title: 'Autor actualizado',
+        text: respToJson.message,
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
+      });
+  
+      setTimeout(() => {
+        window.location.href = "/"; // Redirigir al usuario a la página principal
+      }, 2000);
+    } else {
+      // Maneja el caso en que la edición no fue exitosa, muestra un mensaje de error
+      const respToJson = await response.json();
+      Swal.fire({
+        title: 'Error',
+        text: respToJson.message,
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      });
+    }
+  } catch (error) {
+    // Maneja errores de red
+    console.error('Error de red', error);
+    Swal.fire({
+      title: 'Error de red',
+      text: 'Hubo un error de red al editar el autor',
+      icon: 'error',
+      confirmButtonText: 'Aceptar'
+    });
   }
+  
+
 });
-
-//autor_libro
-document.addEventListener("DOMContentLoaded", () => {
-  const formLibro = document.querySelector("#formLibro");
-  const autorId = "6525801ccd2f32c58c8bd6a9"; // ID del autor en formato de cadena
-
-  formLibro.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const titulo = document.querySelector("#titulo").value;
-    const fecha_publicacion = document.querySelector("#fecha_publicacion").value;
-    const numero_pag = document.querySelector("#numero_pag").value;
-    const genero = document.querySelector("#genero").value;
-    const precio = document.querySelector("#precio").value;
-    const portada = document.querySelector("#portada").files[0];
-    const descripcion = document.querySelector("#descripcion").value;
-
-    const libro = {
-      titulo,
-      fecha_publicacion,
-      numero_pag,
-      genero,
-      portada,
-      precio,
-      descripcion
-    };
-
-    const data = await fetch(`/autor/${autorId}/libro`, {
-      method: "POST",
-      body: JSON.stringify(libro),
-    headers: {
-      'content-type': 'application/json',
-    },
-  });
-
-  const response = await data.json();
-
-  if (response.success) {
-    alert(response.message);
-    window.location.href = '/';
-  } else {
-    alert(response.message);
-  }
 })
-});

@@ -43,15 +43,14 @@ function mostrarListaLibros(libros, tablaElement) {
         `;
     });
 
-    // Agrega la lista de libros al elemento de la tabla
     tablaElement.innerHTML = lista;
 }
 
-function eliminarAutor(event) {
+function eliminarLibro(event) {
     const _id = event.target.dataset.id;
     
-    // Confirmación para eliminar al autor
-    const confirmarEliminar = confirm("¿Estás seguro de que deseas eliminar este autor?");
+    // Confirmación para eliminar el libro
+    const confirmarEliminar = confirm("¿Estás seguro de que deseas eliminar este libro?");
 
     if (confirmarEliminar) {
         fetch(`/libro/${_id}`, {
@@ -63,7 +62,7 @@ function eliminarAutor(event) {
             window.location.reload();
         })
         .catch(error => {
-            console.error('Error al eliminar el autor', error);
+            console.error('Error al eliminar el libro', error);
         });
     }
 }

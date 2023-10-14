@@ -6,7 +6,7 @@ import { obtenerUnLibro, editarLibro, EliminarLibro, listadoLibros, lista_libro,
 //vista
 router.get("/lista", lista_libro)
 
-router.get("/editar_libro", editarForm_libro)
+router.get("/editar_libro/:_id", editarForm_libro)
 
 
 //crud

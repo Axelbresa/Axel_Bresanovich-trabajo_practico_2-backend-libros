@@ -60,5 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
             confirmButtonText: 'Aceptar'
           });
         }
+        
       });
     });
