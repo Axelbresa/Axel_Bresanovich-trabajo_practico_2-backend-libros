@@ -29,7 +29,7 @@ const libroSchema = new Schema({
     type: String,
     required: true,
   },
-  Autor: {
+  autor: {
     type: Schema.Types.ObjectId,
     ref: "Autores", // Asegúrate de que "autor" coincida con el nombre del modelo de autor.
   },

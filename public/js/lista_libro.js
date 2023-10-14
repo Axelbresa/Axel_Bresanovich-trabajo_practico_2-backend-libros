@@ -1,65 +1,69 @@
-//libros
-const obtenerDatos = async () => {
-    const data = await fetch('/lista', {
+document.addEventListener('DOMContentLoaded', async () => {
+    const listaLibros = await obtenerDatosLibros();
+
+    const tbody = document.querySelector('#listadoLibro');
+
+    mostrarListaLibros(listaLibros, tbody);
+});
+
+async function obtenerDatosLibros() {
+    const response = await fetch('/libro', {
         method: 'GET'
     });
-    const lista_libro = await data.json();
-    return lista_libro;
+
+    if (response.ok) {
+        const data = await response.json();
+        return data;
+    } else {
+        console.error('Error al obtener datos de libros');
+        return [];
+    }
 }
 
-
-const mostrarLista = (lista_libro, tablaElement) => {
+function mostrarListaLibros(libros, tablaElement) {
     let lista = '';
-    lista_libro.forEach(lista => {
+
+    libros.forEach(libro => {
         lista += `
             <tr>
-                <td>${lista.titulo}</td>
-                <td>${lista.fecha_publicacion}</td>
-                <td>${lista.numero_pag}</td>
-                <td>${lista.precio}</td>
-                <td>${lista.descripcion}</td>
-                <td>${lista.portada}</td>
-                <td>${lista.genero}</td>
-                <td class="gap-1">               
-                    <a href="/editar/${lista.id}" class="btn btn-sm btn-warning fa-regular fa-pen-to-square">
-                        editar
+                <td>${libro.titulo}</td>
+                <td>${libro.fecha_publicacion}</td>
+                <td>${libro.numero_paginas}</td>
+                <td>${libro.precio}</td>
+                <td>${libro.genero}</td>
+                <td>${libro.portada}</td>
+                <td>${libro.descripcion}</td>
+                <td class="gap-1">
+                    <a href="/libro/${libro._id}" class="btn btn-sm btn-warning">
+                        Editar
                     </a>
-                    <button class="btn btn-sm btn-danger" data-id="${lista.id}" onClick=eliminarReserva(event)>eliminar
-                    </button>
+                    <button class="btn btn-sm btn-danger" data-id="${libro._id}" onclick="eliminarLibro(event)">Eliminar</button>
                 </td>
             </tr>
-        `
-    })
+        `;
+    });
 
+    // Agrega la lista de libros al elemento de la tabla
     tablaElement.innerHTML = lista;
-
 }
 
+function eliminarAutor(event) {
+    const _id = event.target.dataset.id;
+    
+    // Confirmación para eliminar al autor
+    const confirmarEliminar = confirm("¿Estás seguro de que deseas eliminar este autor?");
 
-const eliminarLista = async (e) => {
-
-    console.log(e)
-    const id = e.target.dataset.id;
-
-    // Se pregunta al usuario si está seguro de eliminar la reserva
-
- 
-
-    const response = await fetch(`/libro/${id}`, {
-        method: 'DELETE',
-    })
-
-    const data = await response.json();
-
-    alert(data.message)
-    window.location.href = "/";
-
+    if (confirmarEliminar) {
+        fetch(`/libro/${_id}`, {
+            method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            window.location.reload();
+        })
+        .catch(error => {
+            console.error('Error al eliminar el autor', error);
+        });
+    }
 }
-
-
-document.addEventListener('DOMContentLoaded', async () => {
-    const tbody = document.querySelector('#listadoLibro');
-    const listado = await obtenerDatos(); 
-    mostrarLista(listado, tbody);
-
-});

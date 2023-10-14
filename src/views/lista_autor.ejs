@@ -1,32 +1,28 @@
 <%- include('partials/header') %>
 
-    <h1>Lista de autores</h1>
-    <div class="container">
-      <div class="row mt-5">
-        <h1 class="text-center border-botton">Lista de autores</h1>
-        <div class="col">
-          <div class="col-md-3 mb-2">
-            <a href="/crear_autor" class="btn btn sm btn-primary" id>Nuevo autor </a>
-            <a href="/crear_libro" class="btn btn sm btn-primary" id>Nuevo libro </a>
-            <a href="/" class="btn btn-info text-light">Inicio</a>
-          </div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Bibliografia</th>
-              </tr>
-            </thead>   
-           
-    
-            <tbody id="listadoautor"></tbody>
-          </table>
-        </div>
+<h2 class="titulo">Lista de Autores</h2>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <div class="col-md-3 mb-2">
+        <a href="/crear_autor" class="btn btn-sm btn-primary">Nuevo autor</a>
+        <a href="/crear_libro" class="btn btn-sm btn-primary">Nuevo libro</a>
+        <a href="/" class="btn btn-info text-light">Inicio</a>
       </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Bibliografía</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="listadoAutor"></tbody> <!-- Asegúrate de que el ID sea "listadoAutor" -->
+      </table>
     </div>
-    <script src="js/lista_autor.js"></script>
-
+  </div>
+</div>
+<script src="js/lista_autor.js"></script>
 
 <%- include('partials/footer') %>
-    

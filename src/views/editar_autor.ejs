@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+
+<main>
+    
+  <form action="/autor/:_id" class="contenedor" id="formEditarAutor" method="PUT" enctype="multipart/form-data">
+    <h2 class="titulo">Editar un autor</h2>
+    <div class="form-group">
+      <label for="id_autor">id</label>
+      <input type="text" id="id_autor" name="id_autor" placeholder="Ingresa el nombre del autor">
+  </div>
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ingresa el nombre del autor">
+    </div>
+    <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" name="apellido" placeholder="Ingresa el apellido del autor">
+    </div>
+    <div class="form-group">
+        <label for="bibliografia">Bibliografía</label>
+        <textarea id="bibliografia" name="bibliografia" placeholder="Ingresa la bibliografía" class="descripcion"></textarea>
+    </div>
+    
+    <input type="submit" value="Editar" class="boton_enviar">
+    <input type="button" value="Cancelar" class="boton_cancelar">
+</form>
+  <script src="/js/editar_autor.js"></script>
+</main>
+
+<%- include('partials/footer') %>
+
+
+
+  
+

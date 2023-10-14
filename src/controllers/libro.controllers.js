@@ -6,11 +6,15 @@ export const lista_libro =(req, res)=>{
     res.render ("lista_libros")
 }
 
+export const editarForm_libro =(req, res)=>{
+    res.render ("editar_libro")
+}
+
 //crud
 
 export const listadoLibros= async (req, res)=>{
     try {
-      const Libro = await libro.find().populate("Autor" )
+      const Libro = await libro.find().populate("autor" )
   
       return res.json(Libro);
   } catch (error) {

@@ -1,7 +1,7 @@
 <%- include('partials/header') %>
 
 <main>
-  <form action="/autor/<%= autorId %>/libro" class="contenedor" id="formLibro" method="post" enctype="multipart/form-data">
+  <form action="/libro/_id" class="contenedor" id="formLibro" method="post" enctype="multipart/form-data">
     <h2 class="titulo">Agregar libro</h2>
     <div class="form-group">
       <label for="titulo">Título</label>
@@ -34,7 +34,7 @@
     <input type="submit" value="Crear" class="boton_enviar">
     <input type="button" value="Cancelar" class="boton_cancelar">
   </form>
-  <script src="/js/crearAutor_libro.js"></script>
+  <script src="/js/editar_libro.js"></script>
 </main>
 
 <%- include('partials/footer') %>
